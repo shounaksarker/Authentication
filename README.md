@@ -1,6 +1,6 @@
-### Authentication
+### Authentication with Firebase
 
-### live-link : [Doctor's Portal](https://******)\*\*
+### live-link : [Still Not published](https://******)
 
 This is the firebase authentication project where user can create account with email and password, Log in, Log in with google.
 
