@@ -1,4 +1,17 @@
-.app{
+.click {
+  text-decoration: none;
+  text-shadow: 5px 5px 5px #000000;
+  color: #eaff79;
+}
+.click:hover {
+  color: #ffa3ff;
+  text-shadow: 5px 5px 5px #000000;
+}
+.sur-text {
+    text-shadow: 5px 5px 5px #000000;
+    color: white;
+}
+/* .bg {
   height: 100vh;
   width: 100%;
   animation: blink 25s linear infinite;
@@ -30,4 +43,4 @@
   100% {
     background: violet;
   }
-}
+} */
