@@ -210,7 +210,7 @@ const Authentication = () => {
           </Fade>
 
           {/* others login option  */}
-          
+
           <div className="p-3">
             <Button className="social-btn" type="submit" onClick={handleGoogle}>
               Log in with Google
