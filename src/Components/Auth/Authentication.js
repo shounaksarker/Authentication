@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 // Mine
 import { MyContext } from "../../App";
 import "./Authentication.css";
-import firebaseConfig from "./firebaseConfig";
+import firebaseConfig from "./firebase.config";
 
 const Authentication = () => {
   // ------ from app.js -------

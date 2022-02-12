@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../App";
-import firebaseConfig from "../Auth/firebaseConfig";
+import firebaseConfig from "../Auth/firebase.config";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn, user, setUser] = useContext(MyContext);
