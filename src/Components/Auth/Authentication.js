@@ -28,9 +28,9 @@ const Authentication = () => {
   let navigate = useNavigate();
 
   // ------ toggle login & signup ------
-  let [open, isOpen] = useState(true);
+  let [loginBtn, setLoginBtn] = useState(true);
   const toggle = () => {
-    isOpen(!open);
+    setLoginBtn(!loginBtn);
   };
 
   // ------- Submission functions -------
@@ -53,7 +53,6 @@ const Authentication = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log("handlesubmit");
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((res) => {
         // console.log(res);
@@ -112,26 +111,29 @@ const Authentication = () => {
         <div className="sign-form mt-5">
           <div className="d-flex">
             <button
-              className={open ? "btn login active" : "btn login"}
+              className={loginBtn ? "btn login active" : "btn login"}
               onClick={toggle}
               aria-controls="example-collapse-text"
-              aria-expanded={open}
+              aria-expanded={loginBtn}
             >
               Login
             </button>
 
             <button
-              className={!open ? "btn signup active" : "btn signup"}
+              className={!loginBtn ? "btn signup active" : "btn signup"}
               onClick={toggle}
               aria-controls="example-fade-text"
-              aria-expanded={!open}
+              aria-expanded={!loginBtn}
             >
               SignUp
             </button>
           </div>
-          <Fade in={open}>
+
+          {/* -------- login Form -------- */}
+
+          <Fade in={loginBtn}>
             <Form
-              className={open ? "p-3" : "p-3 d-none"}
+              className={loginBtn ? "p-3" : "p-3 d-none"}
               id="example-collapse-text"
             >
               <Form.Group className="mb-3">
@@ -163,10 +165,11 @@ const Authentication = () => {
             </Form>
           </Fade>
 
-          {/* sign up  */}
-          <Fade in={!open}>
+          {/* -------- sign up -------- */}
+
+          <Fade in={!loginBtn}>
             <Form
-              className={!open ? "p-3" : "p-3 d-none"}
+              className={!loginBtn ? "p-3" : "p-3 d-none"}
               id="example-fade-text"
             >
               <Form.Group className="mb-3">
@@ -207,6 +210,7 @@ const Authentication = () => {
           </Fade>
 
           {/* others login option  */}
+          
           <div className="p-3">
             <Button className="social-btn" type="submit" onClick={handleGoogle}>
               Log in with Google
