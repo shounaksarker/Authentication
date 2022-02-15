@@ -9,16 +9,15 @@ import Surprise from "./Components/Surprise/Surprise";
 export const MyContext = createContext();
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
-    photo:"",
+    photo: "",
   });
 
   return (
-    <MyContext.Provider value={[isLoggedIn, setIsLoggedIn, user, setUser]}>
+    <MyContext.Provider value={[user, setUser]}>
       <div className="app">
         <Header />
         <Routes>

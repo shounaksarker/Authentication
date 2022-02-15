@@ -17,7 +17,7 @@ import firebaseConfig from "./firebase.config";
 
 const Authentication = () => {
   // ------ from app.js -------
-  const [, setIsLoggedIn, user, setUser] = useContext(MyContext);
+  const [user, setUser] = useContext(MyContext);
 
   // ------ firebase ------
   firebase.initializeApp(firebaseConfig);
@@ -52,11 +52,12 @@ const Authentication = () => {
     // setUser(res)
   };
 
-  const handleSubmit = (e) => {
+  const handleSignIn = (e) => {
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((res) => {
-        // console.log(res);
-        setIsLoggedIn(true);
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('password', user.password);
+
         navigate(-1);
       })
       .catch((error) => {
@@ -66,11 +67,12 @@ const Authentication = () => {
     e.preventDefault();
   };
 
-  const handleSubmit2 = (e) => {
+  const handleSignUp = (e) => {
     createUserWithEmailAndPassword(auth, user.email, user.password, user.name)
       .then((res) => {
-        // console.log(res)
-        setIsLoggedIn(true);
+        localStorage.setItem('name', user.name);
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('password', user.password);
         navigate(-1);
       })
       .catch((error) => {
@@ -86,7 +88,9 @@ const Authentication = () => {
     res.email = x.user.email;
     res.photo = x.user.photoURL;
     setUser(res);
-    setIsLoggedIn(true);
+    localStorage.setItem('name', res.name);
+    localStorage.setItem('email', res.email);
+    localStorage.setItem('photo', res.photo);
     navigate(-1);
   };
   const handleGoogle = () => {
@@ -104,6 +108,9 @@ const Authentication = () => {
         alert(error.message);
       });
   };
+
+  // if logged-in user come to auth page again, localStorage (user) data will be removed
+  localStorage.clear();
 
   return (
     <div className="authentication">
@@ -158,7 +165,7 @@ const Authentication = () => {
                 className="submit"
                 variant="primary"
                 type="submit"
-                onClick={handleSubmit}
+                onClick={handleSignIn}
               >
                 Log in
               </Button>
@@ -202,7 +209,7 @@ const Authentication = () => {
                 className="submit"
                 variant="primary"
                 type="submit"
-                onClick={handleSubmit2}
+                onClick={handleSignUp}
               >
                 Create Account
               </Button>
