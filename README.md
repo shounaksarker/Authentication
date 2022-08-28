@@ -1,6 +1,6 @@
 ### Authentication with Firebase
 
-### live-link : [Still Not published](https://******)
+### live-link : [Authentication](https://auth-snk.web.app)
 
 This is the firebase authentication project where user can create account with email and password, Log in, Log in with google.
 
